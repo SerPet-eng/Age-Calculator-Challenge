@@ -22,19 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       resetErrors();
 
-      if (dayValue <= 1 || dayValue >= 31) {
+      if (dayValue < 1 || dayValue > 31) {
         dayInput.classList.add('dayError');
-        dayMessErr.style.display = 'inline';
+        dayMessErr.classList.add('errorText');
         dayMessErr.textContent = 'Must be a valid day';
       }
-      if (monthValue <= 1 || monthValue >= 12) {
+      if (monthValue < 1 || monthValue > 12) {
         monthInput.classList.add('monthError');
-        monthMessErr.style.display = 'inline';
+        monthMessErr.classList.add('errorText');
         monthMessErr.textContent = 'Must be a valid month';
       }
-      if (yearValue <= 1940 || yearValue >= 2099) {
+      if (yearValue < 1940 || yearValue > 2099) {
         yearInput.classList.add('yearError');
-        yearMessErr.style.display = 'inline';
+        yearMessErr.classList.add('errorText');
         yearMessErr.textContent = 'Must be a valid year';
       }
       getValue(dayValue, monthValue, yearValue);
@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
     monthInput.classList.remove('monthError');
     yearInput.classList.remove('yearError');
 
-    dayMessErr.style.display = 'none';
-    monthMessErr.style.display = 'none';
-    yearMessErr.style.display = 'none';
+    dayMessErr.classList.remove('errorText');
+    monthMessErr.classList.remove('errorText');
+    yearMessErr.classList.remove('errorText');
   }
 
   function showAllErrors() {
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     dayMessErr.textContent = 'Must be a valid date';
 
-    dayMessErr.style.display = 'inline';
+    dayMessErr.classList.add('errorText');
   }
 
   function getValue(days, months, years) {
