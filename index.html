@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Frontend Mentor | Age calculator app</title>
+  </head>
+  <body>
+    <main class="app">
+      <div class="form">
+        <div class="form-item">
+          <label for="day">Day</label>
+          <input
+            type="number"
+            name="day"
+            class="day"
+            id="daysInput"
+            data-input="day"
+            placeholder="DD"
+            min="1"
+            max="30"
+          />
+          <small id="dayMessErr" class="dayMessErr">Must ba a valid day</small>
+        </div>
+
+        <div class="form-item">
+          <label for="month">Month</label>
+          <input
+            type="number"
+            name="month"
+            class="month"
+            id="monthsInput"
+            data-input="month"
+            placeholder="MM"
+            min="1"
+            max="12"
+          />
+          <small id="monthMessErr" class="monthMessErr"
+            >Must ba a valid month</small
+          >
+        </div>
+
+        <div class="form-item">
+          <label for="year">Year</label>
+          <input
+            type="number"
+            name="year"
+            class="year"
+            id="yearsInput"
+            data-input="year"
+            placeholder="YYYY"
+            min="1930"
+            max="2999"
+          />
+          <small id="yearMessErr" class="yearMessErr"
+            >Must ba a valid year</small
+          >
+        </div>
+      </div>
+
+      <div class="button-section">
+        <button class="button" id="button">
+          <img src="./assets/images/icon-arrow.svg" alt="Arrow Button" />
+        </button>
+      </div>
+
+      <section class="section">
+        <div class="section-item">
+          <p class="value" id="years">--</p>
+          <p class="section-title">years</p>
+        </div>
+
+        <div class="section-item">
+          <p class="value" id="months">--</p>
+          <p class="section-title">months</p>
+        </div>
+
+        <div class="section-item">
+          <p class="value" id="days">--</p>
+          <p class="section-title">days</p>
+        </div>
+      </section>
+    </main>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </body>
+  <script src="./script.js"></script>
+</html>
