@@ -20,24 +20,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!dayValue && !monthValue && !yearValue) {
       showAllErrors();
     } else {
-      if (!dayValue) {
+      resetErrors();
+
+      if (dayValue <= 1 || dayValue >= 31) {
         dayInput.classList.add('dayError');
         dayMessErr.style.display = 'inline';
         dayMessErr.textContent = 'Must be a valid day';
       }
-      if (!monthValue) {
+      if (monthValue <= 1 || monthValue >= 12) {
         monthInput.classList.add('monthError');
         monthMessErr.style.display = 'inline';
         monthMessErr.textContent = 'Must be a valid month';
       }
-      if (!yearValue) {
+      if (yearValue <= 1940 || yearValue >= 2099) {
         yearInput.classList.add('yearError');
         yearMessErr.style.display = 'inline';
         yearMessErr.textContent = 'Must be a valid year';
       }
+      getValue(dayValue, monthValue, yearValue);
     }
-
-    getValue(dayValue, monthValue, yearValue);
   });
 
   function resetErrors() {
@@ -66,9 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let getMonths = months - (currentDate.getMonth() + 1);
     let getYears = years - currentDate.getFullYear();
 
-    yearsEl.textContent = Math.abs(getYears) || '--';
-    monthsEl.textContent = Math.abs(getMonths) || '--';
-    daysEl.textContent = Math.abs(getDays) || '--';
+    if (!days) {
+      daysEl.textContent = '--';
+    }
+    if (!months) {
+      monthsEl.textContent = '--';
+    }
+    if (!years) {
+      yearsEl.textContent = '--';
+    }
+
+    yearsEl.textContent = Math.abs(getYears);
+    monthsEl.textContent = Math.abs(getMonths);
+    daysEl.textContent = Math.abs(getDays);
   }
+
   resetErrors();
 });
