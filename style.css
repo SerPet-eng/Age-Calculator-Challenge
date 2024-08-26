@@ -1,9 +1,57 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
 *,
-::after,
-::before {
+*::before,
+*::after {
   box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
   margin: 0;
-  padding: 0;
+}
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  5. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
 }
 
 :root {
@@ -28,62 +76,75 @@ body {
 }
 
 .app {
-  border-radius: 10px 10px 50px 10px;
-  background-color: var(--clr-neutral-900);
   margin: 1rem auto;
-  padding: 1rem calc(1rem + 2rem);
+  padding: 1rem calc(1rem + 1vw);
+  background-color: var(--clr-neutral-900);
 
+  border-radius: 10px 10px 30px 10px;
   max-width: 900px;
 }
 
 .form {
   display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-
-  width: 100%;
+  justify-content: space-around;
+  gap: 0;
 }
 
 @media only screen and (min-width: 900px) {
   .form {
-    justify-content: flex-start;
-    max-width: 80%;
+    justify-content: start;
+    gap: 1rem;
   }
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-@media only screen and (min-width: 900px) {
-  input {
-    width: 100%;
-  }
+.form-title {
+  font-size: 1rem;
+  font-weight: var(--fw-700);
+  text-transform: uppercase;
+  color: var(--clr-neutral-600);
 }
 
 #daysInput,
 #monthsInput,
 #yearsInput {
-  border-radius: 10px;
-  font-size: clamp(1rem, 2vw, 2rem);
-  font-weight: 600;
-  background-color: var(--clr-neutral-900);
-  max-width: 100%;
-  padding: 0.5em 2em 0.5em 0.5em;
+  padding: 0.5em 1em 0.5em 0.5em;
+  width: 90%;
+  border-radius: 5px;
+  font-weight: var(--fw-700);
+  font-size: 1.5rem;
+  opacity: 100%;
+}
+
+@media only screen and (min-width: 900px) {
+  #daysInput,
+  #monthsInput,
+  #yearsInput {
+    width: 100%;
+  }
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .day {
-  border: 1px solid lightgray;
+  border: 1px solid var(--clr-neutral-700);
 }
 
 .month {
-  border: 1px solid lightgray;
+  border: 1px solid var(--clr-neutral-700);
 }
 
 .year {
-  border: 1px solid lightgray;
+  border: 1px solid var(--clr-neutral-700);
 }
 
 .dayError {
@@ -99,55 +160,45 @@ input::-webkit-inner-spin-button {
 }
 
 small {
-  width: 0;
-  margin: 0;
-  padding: 0;
-  font-size: 0.9rem;
+  color: transparent;
   font-style: italic;
-  color: red;
+  font-weight: var(--fw-400-i);
+  font-size: calc(0.5rem + 0.3vw);
 }
 
-label {
-  display: block;
-  font-weight: 600;
-  font-size: clamp(1rem, 5vw, 1.5rem);
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  color: lightgray;
+.text {
+  color: transparent;
+}
+
+.errorText {
+  color: red;
 }
 
 .button-section {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin: 1rem auto;
   width: 100%;
 }
 
 .button {
-  background-color: var(--clr-primary-purple);
   border: none;
   border-radius: 50%;
+  background-color: var(--clr-primary-purple);
   padding: 1rem;
-
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
 }
 
-.button:hover {
-  background-color: var(--clr-primary-purple-hover);
+.button-section::before {
+  content: '';
+  width: 100%;
+  height: 3px;
+  background-color: var(--clr-neutral-700);
 }
 
-.button:active {
-  background-color: var(--clr-neutral-500);
-}
-
-.button-section::before,
 .button-section::after {
   content: '';
-  background-color: var(--clr-neutral-700);
   width: 100%;
-  height: 2px;
+  height: 3px;
+  background-color: var(--clr-neutral-700);
 }
 
 @media only screen and (min-width: 900px) {
@@ -158,23 +209,17 @@ label {
 
 .section-item {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
 }
 
 .value {
-  font-size: clamp(3rem, 6vw, 6rem);
-  font-weight: var(--fw-800-i);
   color: var(--clr-primary-purple);
-}
-
-.section-title {
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
-  font-weight: var(--fw-800-i);
 }
 
 .value,
 .section-title {
+  font-size: clamp(3rem, 5vw, 6rem);
+  font-weight: var(--fw-800-i);
   font-style: italic;
 }
 
